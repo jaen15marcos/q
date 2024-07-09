@@ -54,3 +54,5 @@ adf_test:{[t;pairs]
 
 
 stationary_pairs: distinct {asc x} each (flip pairwise_corr[`pair1`pair2]) where raze adf; /445
+
+//Stationary pairs matrix will be used as reference to calculate a dynamic hedge ratio between cointegrated pairs
