@@ -20,7 +20,7 @@ input.applyFilter : `;
 
 //Create empty table to store results
 output.cols: `date`mkt`sym`listing_mkt`maxbid`min_ask`last_bid`last_ask`last_mid_price`total_volume`total_value`vwap`adv`range`maxprice`minprice`last_price`num_of_trades`num_of_block_trades`block_volume`block_value`dark_volume`dark_value`num_of_dark_trades`short_volume`total_short_value`num_of_short_trades`twap_closing_price`dqs`pqs`num_quotes`des_k`pes_k`wmid`volumebuy`volumesell`orderbookimbalance`realized_vol`drs_k_1m`prs_k_1m`drs_k_5m`prs_k_5m`dpi_k_1m`ppi_k_1m`dpi_k_5m`ppi_k_5m;
-dailyliqmet: flip (output.cols)!(`date$();`symbol$();`symbol$();`symbol$();`float$();`float$();`float$();`float$();`float$();`long$();``float$();`float$();`float$();`float$();`float$();`float$();`float$();`long$();`long$();`long$();`float$();`long$();`float$();`long$();`long$();`float$();`long$();`float$();`float$();`float$();`long$();`float$();`float$();`float$();`long$();`long$();`float$();`float$();`float$();`float$();`float$();`float$();`float$();`float$();`float$();`float$());
+dailyliqmet: flip (output.cols)!(`date$();`symbol$();`symbol$();`symbol$();`float$();`float$();`float$();`float$();`float$();`long$();`float$();`float$();`float$();`float$();`float$();`float$();`float$();`long$();`long$();`long$();`float$();`long$();`float$();`long$();`long$();`float$();`long$();`float$();`float$();`float$();`long$();`float$();`float$();`float$();`long$();`long$();`float$();`float$();`float$();`float$();`float$();`float$();`float$();`float$();`float$();`float$());
 //Inititate while loop
 i:0;
 while[i<count[calendar];
