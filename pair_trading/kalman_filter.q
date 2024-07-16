@@ -88,4 +88,7 @@ ResultskalmanFilter:{[t;pairs]
 \ts 
 results: ResultskalmanFilter[0!prices; 100#stationary_pairs];
 
-results: results,' ([]tickers:raze {5212425#x} each {`$"&" sv string raze x} each 100#stationary_pairs); //edit based on number of observations per ticker - check cointegration.q for more documentation
+results: results,'([]time:raze flip {100#x} each exec time from 0!prices;date:raze flip {100#x} each exec date from 0!prices; 
+    pair1: raze {(0!prices)x} each raze {first `$"&" vs string x} each {`$"&" sv string raze x} each 100#stationary_pairs; 
+    pair2: raze {(0!prices)x} each raze {last `$"&" vs string x} each {`$"&" sv string raze x} each 100#stationary_pairs;
+    tickers:raze {5212425#x} each {`$"&" sv string raze x} each 100#stationary_pairs);; //edit based on number of observations per ticker - check cointegration.q for more documentation
