@@ -133,3 +133,21 @@ while[i<count[calendar];
     //Iterate again
     i+: 1;
     ];
+
+
+//Alternative mm_orders function replicating TD Market Maker Study (Quote Depth >= 100k, Active 50% of the time)
+
+mm_orders:{[t] 
+    bids: delete b_duration from update b_status: ?[(b_duration>00:03:10:00) and b_orders>=310;`A;`P] by instrumentID, listing_mkt, date, po, ac_type, sme from
+    select b_duration: sum `time$b_duration, b_orders: sum b_orders, bid_depth: sum bid_depth by instrumentID, listing_mkt, date, po, ac_type, sme from
+    update b_duration: {(where[x!y]sums y)-x}[eventTimestamp;differ bid_depth] by  instrumentID, listing_mkt, date, po, ac_type, sme from select bid_depth: sum price*volume, 
+    b_orders: count i by eventTimestamp, date: `date$eventTimestamp, instrumentID, listing_mkt, event, po: b_po, ac_type: b_type, 
+    sme: b_sme from select from t where 100000<=price*volume where b_po<>0,b_type<>`;
+    asks: delete s_duration from update s_status: ?[(s_duration>00:03:10:00) and s_orders>=310;`A;`P] by instrumentID, listing_mkt, date, po, ac_type, sme from
+    select s_duration: sum `time$s_duration, s_orders: sum s_orders, ask_depth: sum ask_depth by instrumentID, listing_mkt, date, po, ac_type, sme from
+    update s_duration: {(where[x!y]sums y)-x}[eventTimestamp;differ ask_depth] by  instrumentID, listing_mkt, date, po, ac_type, sme from select ask_depth: sum price*volume, 
+    s_orders: count i by eventTimestamp, date: `date$eventTimestamp, instrumentID, listing_mkt, event, po: s_po, ac_type: s_type, 
+    sme: s_sme from select from t where 100000<=price*volume where s_po<>0,s_type<>`;
+    :0!(uj/)(bids;asks);
+    };
+
