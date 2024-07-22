@@ -11,7 +11,7 @@ calendar: GetInputDates[2024.05.01;2024.05.31];
 input.symbols :`;
 input.startTime : 09:30:00.000;
 input.endTime : 16:00:00.000;
-input.columnsT : `sym`time`volume`price`total_value`listing_mkt`event`sequence_number`mkt`s_short`s_short_marking_exempt`b_short_marking_exempt`s_user_name`b_user_name`b_po_name`s_po_name`s_program_trade`b_type`s_type`b_market_maker`s_market_maker`b_active_passive`s_active_passive`trade_stat`trade_correction`s_dark`b_dark;
+input.columnsT : `sym`time`volume`price`total_value`listing_mkt`event`sequence_number`mkt`s_short`s_short_marking_exempt`b_short_marking_exempt`s_user_name`b_user_name`b_po_name`s_po_name`s_program_trade`b_type`s_type`b_market_maker`s_market_maker`b_active_passive`s_active_passive`trade_stat`trade_correction`s_dark`b_dark`s_internal_cross;
 input.columnsQ : `sym`listing_mkt`mkt`time`nat_best_bid`nat_best_offer`nat_best_bid_size`nat_best_offer_size`ask_price`bid_price;
 input.tableQ : `quote;
 input.tableT : `trade;
