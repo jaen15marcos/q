@@ -4,7 +4,7 @@
 .mapq.summarystats.filtertrades:{[tt]
 // Trade-based filters
     tt: cols[tt]xcols 0!select by date:`date$time, sym, listing_mkt, sequence_number from tt;
-    :@[;`sym;`p#] `sym xasc 0!update volume wavg price, sum volume by date, sym, listing_mkt, time from tt where event=`Trade, not trade_correction="Y", not trade_stat=`C;  /eval (!;0;(!;`tt;enlist enlist((/:;in);enlist`Trade;`event);`date`sym`listing_mkt`time!`date`sym`listing_mkt`time;`price`volume`total_value!((wavg;`volume;`price);(sum;`volume);(prd;(enlist;`price;`volume)))))
+    :@[;`sym;`p#] `sym xasc 0!update volume wavg price, sum volume by date, sym, listing_mkt, time from tt where event=`Trade, not trade_correction="Y", not trade_stat=`C, not s_internal_cross="Y";  /eval (!;0;(!;`tt;enlist enlist((/:;in);enlist`Trade;`event);`date`sym`listing_mkt`time!`date`sym`listing_mkt`time;`price`volume`total_value!((wavg;`volume;`price);(sum;`volume);(prd;(enlist;`price;`volume)))))
     }; 
 
 .mapq.summarystats.filterorders:{[OO]
